@@ -1,0 +1,219 @@
+/* global rules start */
+/* Open Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+/* start variables */
+:root {
+    --main-color: #19c8fa;
+    --hr-color: #a2a2a2;
+    --transition-duration: 0.3s;
+}
+/* end variables */
+* {
+    /* reset the elements */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* add prefix for best performence */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* our font */
+    font-family: 'Open Sans', sans-serif;
+    background-color: brown;
+}
+
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width: 1200px; */
+}
+
+/* xs screen */
+@media (max-width: 576px) {
+    .container {
+        width: 90%;
+    }
+}
+
+/* s screen */
+@media (min-width: 576px) and (max-width: 767px) {
+    .container {
+        width: 90%;
+    }
+}
+
+/* m screen */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: 730px;
+    }
+}
+
+/* lg screen */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        width: 1050px;
+    }
+}
+
+/* xl screen */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .container {
+        width: 1200px;
+    }
+}
+
+/* xxl screen */
+@media (min-width: 1400px) {
+    .container {
+        width: 1300px;
+    }
+}
+
+ul {
+    list-style-type: none;
+}
+/* globar rules end */
+
+/* reusable components start */
+
+/* reusable components end */
+
+/* header style start */
+header {
+    min-height: 98px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+header .container {
+    min-height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+header .container::after {
+    content: '';
+    width: calc(100% - 2rem);
+    height: 1px;
+    background-color: var(--hr-color);
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+}
+
+header .logo {
+    height: 40px;
+}
+
+header nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    header nav ul {
+        display: none;
+    }
+    header nav ul li {
+        width: 100%;
+    }
+    header nav ul li a {
+        width: inherit;
+        padding: 15px 10px !important;
+    }
+}
+/* one button clicked overwrite the none */
+header nav ul.small-screen-list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+    header nav ul {
+        display: flex;
+    }
+}
+
+header nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: var(--transition-duration);
+    padding: 40px 10px;
+    font-size: 14px;
+    z-index: 2;
+    border-bottom: 1px solid transparent;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    border-bottom: 2px solid var(--main-color);
+    color: var(--main-color);
+}
+
+header nav .form {
+    width: 60px;
+    height: 30px;
+    position: relative;
+    margin-left: 30px;
+    border-left: 1px solid white;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 330px) {
+    header nav .form {
+        width: 40px;
+        margin-left: 15px;
+    }
+}
+
+header nav .form i {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* show menu button */
+header button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+header button .toggle-menu {
+    color: white;
+    font-size: 20px;
+}
+@media (min-width: 768px) {
+    header button {
+        display: none;
+    }
+}
+/* header style end */
