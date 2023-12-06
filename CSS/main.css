@@ -5,6 +5,7 @@
 :root {
     --main-color: #19c8fa;
     --hr-color: #a2a2a2;
+    --transparent-color: rgba(21,100,120,0.8);
     --transition-duration: 0.3s;
 }
 /* end variables */
@@ -81,6 +82,12 @@ body {
 ul {
     list-style-type: none;
 }
+
+.reset-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
 /* globar rules end */
 
 /* reusable components start */
@@ -149,7 +156,7 @@ header nav ul.small-screen-list {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 @media (min-width: 768px) {
@@ -200,12 +207,6 @@ header nav .form i {
     font-size: 20px;
     font-weight: bold;
 }
-/* show menu button */
-header button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
 
 header button .toggle-menu {
     color: white;
@@ -217,3 +218,105 @@ header button .toggle-menu {
     }
 }
 /* header style end */
+/* landing style start */
+.landing {
+    height: 100vh;
+    background-color: #333;
+    background-image: url("../imgs/landing.jpg");
+    object-fit: cover;
+    position: relative;
+}
+
+.landing .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.landing .text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: var(--transparent-color);
+    color: white;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.landing .text .content {
+    max-width: 500px;
+}
+
+@media (max-width: 767px) {
+    .landing .text {
+        width: 100%;
+    }
+    .landing .text .content {
+        width: 100%;
+    }
+    .change-right,
+    .change-left {
+        display: none;
+    }
+    
+}
+
+.landing .text h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+.landing .text p {
+    font-size: 14px;
+    line-height: 2.0;
+}
+
+.landing button.change-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    z-index: 1;
+    color: white;
+}
+
+.landing button.change-left {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    z-index: 1;
+    color: white;
+}
+
+.landing .bubbles {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    width: 80px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.landing .bubbles .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background-color: transparent;
+}
+
+.landing .bubbles .active {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+/* landing style end */

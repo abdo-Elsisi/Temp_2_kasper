@@ -25,7 +25,7 @@
                 <img src="imgs/logo.png" alt="logo" class="logo">
             </a>
                 <nav>
-                    <button id="show-list-btn">
+                    <button class="reset-button" id="show-list-btn">
                         <i class="fas fa-bars toggle-menu"></i>
                     </button>
                     <ul id="menu">
@@ -44,7 +44,26 @@
     </header>
     <!-- end header -->
     <!-- landing start -->
-    
+    <div class="landing">
+        <div class="overlay"></div>
+        <div class="text">
+            <div class="content">
+                <h2>Unlock Explosive <br>Growth with Kasper</h2>
+                <p>Tired of stagnant marketing results? Kasper is here to help. We create data-driven campaigns that deliver real results, from boosting brand awareness to driving conversions.</p>
+            </div>
+        </div>
+        <button class="reset-button change-right" onclick="displayNextBakground();">
+            <i class="fas fa-angle-right change-background fa-2x"></i>
+        </button>
+        <button class="reset-button change-left" onclick="displayPrevBakground();">
+            <i class="fas fa-angle-left change-background fa-2x"></i>
+        </button>
+        <div class="bubbles">
+            <div class="circle" data-circle-order="0"></div>
+            <div class="circle active" data-circle-order="1"></div>
+            <div class="circle" data-circle-order="2"></div>
+        </div>
+    </div>
     <!-- landing end -->
 </body>
 
