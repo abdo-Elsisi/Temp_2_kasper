@@ -513,4 +513,101 @@ header button .toggle-menu {
     padding-top: var(--sec-padding);
     padding-bottom: var(--sec-padding);
 }
+
+.portfolio ul.shuffle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.portfolio ul.shuffle li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+}
+.portfolio ul.shuffle a.active,
+.portfolio ul.shuffle li a:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.portfolio .image-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.portfolio .image-container .box {
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .portfolio .image-container .box {
+        width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .portfolio .image-container .box {
+        width: 50%;
+    }
+}
+@media (min-width: 1189px) {
+    .portfolio .image-container .box {
+        width: 25%;
+    }
+}
+
+.portfolio .image-container .box img {
+    position: relative;
+    max-width: 100%;
+    transition: var(--transition-duration);
+
+}
+
+.portfolio .image-container .box:hover img {
+    transform: rotateZ(3deg) scale(1.1);
+}
+.portfolio .image-container .box .caption  {
+    padding: 20px;
+    width: 100%;
+    position: absolute;
+    background-origin: 0;
+    z-index: 1;
+    bottom: -100%;
+    left: 0;
+    background-color: white;
+    transition: 0.6s;
+    /* transition: var(--transition-duration); */
+    transform: rotateZ(50deg);
+}
+
+.portfolio .image-container .box:hover .caption {
+    bottom: 0;
+    transform: rotateZ(0deg);
+
+}
+
+.portfolio .image-container .box .caption h4 {
+    font-weight: normal;
+}
+.portfolio .image-container .box .caption p {
+    color: var(--main-color);
+}
+
+.portfolio a.more {
+   text-decoration: none;
+   display: block;
+   width: fit-content;
+   text-align: center;
+   padding: 15px 20px;
+   text-transform: uppercase;
+   color: white;
+   background-color: var(--main-color);
+   margin: 30px auto;
+}
+
+.hide-element {
+    display: none;
+}
 /* portfolio style end */
