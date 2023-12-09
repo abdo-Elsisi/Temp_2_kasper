@@ -670,3 +670,25 @@ header button .toggle-menu {
     border: none;
 }
 /* video sec end */
+/* about sec start */
+.about {
+    padding-top: var(--sec-padding);
+    overflow: hidden;
+}
+
+.about img {
+    --img-offset: -120px;
+    max-width: 100%;
+    position: relative;
+    bottom: var(--img-offset);
+    margin-top: var(--img-offset);
+
+}
+
+@media (max-width: 767px) {
+    .about img{
+        --img-offset: -60px;
+    }
+    
+}
+/* about sec end */
