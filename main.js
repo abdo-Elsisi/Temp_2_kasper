@@ -1,3 +1,4 @@
+// alert(innerWidth);
 // Variables declarations
 const menuBtn = document.getElementById("show-list-btn");
 const menu = document.getElementById("menu");
@@ -8,6 +9,41 @@ const portfolioImages = document.querySelectorAll(".box");
 const portfolioHiddenBlocks = document.querySelectorAll(".hide-element");
 const portfolioMoreAnchor = document.querySelector(".more");
 const shuffleAnchors = document.querySelectorAll(".shuffle-anchor");
+// recommendation section var
+const cir = document.querySelectorAll(".cir");
+const recommendationContainer = document.querySelector(".recommendation-container");
+const recommendations = [
+    [
+      `<div class="recommendation" signature="Jane Doe, Marketing Manager">
+        <img src="imgs/skills-05.jpg" alt="profile pic">
+        <p>Kaspers digital marketing strategies have been instrumental in boosting our brand awareness</p></div>
+      <div class="recommendation" signature="Peter Smith, CEO">
+        <img src="imgs/skills-06.jpg" alt="profile pic">
+        <p>Working with Kasper has been a true pleasure. They are professional, responsive.</p>
+      </div>`
+    ],
+    [
+      `<div class="recommendation" signature="Maria Garcia, Founder">
+        <img src="imgs/skills-01.jpg" alt="profile pic">
+        <p>I was initially hesitant to invest in digital marketing, but after working with Kasper.</p>
+      </div>
+      <div class="recommendation" signature="David Li, Entrepreneur">
+        <img src="imgs/skills-02.jpg" alt="profile pic">
+        <p>Kasper's data-driven approach to digital marketing is what truly sets them apart.</p>
+      </div>`
+    ],
+    [
+      `<div class="recommendation" signature="Sarah Jones, Marketing Director">
+        <img src="imgs/skills-03.jpg" alt="profile pic">
+        <p>Kasper's ability to think outside the box and come up with innovative solutions is what I value most.</p>
+      </div>
+      <div class="recommendation" signature="Michael Brown, CEO">
+        <img src="imgs/skills-04.jpg" alt="profile pic">
+        <p>Kasper's commitment to client satisfaction is truly exceptional. They are always available</p>
+      </div>`
+    ]
+  ];
+  
 
 //event
 menuBtn.addEventListener("click", function () {
@@ -146,3 +182,14 @@ function hideBox(attributeName) {
         box.classList.remove("hide-element");
     })
 }
+// recommendation code:
+cir.forEach((bullet, index) => {
+    bullet.addEventListener("click", () => {
+      recommendationContainer.innerHTML = recommendations[index];
+  
+      // Add active class to clicked bullet and remove from others
+      cir.forEach(b => b.classList.remove("active"));
+      bullet.classList.add("active");
+    });
+});
+  
