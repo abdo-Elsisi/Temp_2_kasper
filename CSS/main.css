@@ -63,7 +63,7 @@ body {
 /* lg screen */
 @media (min-width: 992px) and (max-width: 1199px) {
     .container {
-        width: 1050px;
+        width: 980px;
     }
 }
 
@@ -139,6 +139,7 @@ ul {
     margin-bottom: 100px;
     max-width: 100%;
 }
+
 /* reusable components end */
 
 /* header style start */
@@ -435,6 +436,8 @@ header button .toggle-menu {
 }
 
 .design img.design-background {
+    width: 100%;
+    height: 100%;
     position: relative;
     object-fit: cover;
 }
@@ -674,6 +677,7 @@ header button .toggle-menu {
 .about {
     padding-top: var(--sec-padding);
     overflow: hidden;
+    text-align: center;
 }
 
 .about img {
@@ -682,13 +686,269 @@ header button .toggle-menu {
     position: relative;
     bottom: var(--img-offset);
     margin-top: var(--img-offset);
-
 }
 
 @media (max-width: 767px) {
     .about img{
         --img-offset: -60px;
     }
-    
 }
 /* about sec end */
+/* statistics sec start */
+.statistics {
+    padding-top: var(--sec-padding);
+    padding-bottom: var(--sec-padding);
+    background-image: url('../imgs/stats.png');
+    background-size: cover;
+    position: relative;  
+}
+
+.statistics::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.statistics .container {
+    position: relative;
+}
+
+.statistics .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--transparent-color);
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statistics .box-container .box {
+    color: white;
+    width: 25%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+@media (max-width: 767px) {
+    .statistics .box-container .box {
+        width: 100%;
+    }  
+    .statistics .box-container .box:not(:last-child) {
+        border-bottom: 1px solid var(--main-color);
+      }        
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .statistics .box-container .box {
+        width: 50%;
+    }
+}
+
+.statistics .box-container .box h1 {
+    font-size: 60px;
+}
+.statistics .box-container .box p {
+    text-transform: capitalize;
+}
+.statistics .box-container .box i {
+    --box-dim: 45px;
+    font-size: 18px;
+    position: relative;
+    background-color: black;
+    width: var(--box-dim);
+    height: var(--box-dim);
+    line-height: var(--box-dim);
+    text-align: center;
+    border-radius: 50%;
+}
+
+.statistics .box-container .box i::after {
+    /* content: ''; */
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+}
+/* statistics sec end */
+/* reviews sec start */
+.reviews {
+    padding-top: var(--sec-padding);
+    padding-bottom: var(--sec-padding);
+}
+.reviews .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.reviews .testimonials {
+    width: 50%;
+    padding: 0 60px;
+}
+.reviews .skills {
+    width: 50%;
+    padding: 0 60px;
+}
+@media (max-width: 1199px) {
+    .reviews .skills {
+        width: 100%;
+        padding: 0;
+    } 
+    .reviews .testimonials {
+        width: 100%;
+        padding: 0;
+    } 
+}
+.reviews .text {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.reviews .text h2 {
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: 30px;
+    font-size: 1.43em;
+}
+
+.reviews .text p {
+    color: var(--lite-gray-color);
+    line-height: 1.9;
+    font-size: 19.4px;
+}
+
+.reviews .recommendation-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reviews .recommendation-container .recommendation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .reviews .recommendation-container .recommendation {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .reviews .recommendation-container .recommendation p {
+        margin-left: 0;
+    }
+}
+
+.reviews .recommendation-container .recommendation::before {
+    content:  attr(signature);
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    color: var(--lite-gray-color);
+    font-size: 18px;
+}
+
+.reviews .recommendation-container .recommendation img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviews .recommendation-container .recommendation p {
+    border-bottom: 1px solid #d4d4d4;
+    line-height: 1.9;
+    font-size: 20px;
+    margin-left: 60px;
+    padding: 0 0 35px;
+}
+
+@media (max-width: 768px) {
+    .reviews .recommendation-container .recommendation p {
+        margin-left: 0;
+    }
+}
+
+.reviews .bullets {
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    margin: 30px auto 50px;
+}
+
+.reviews .bullets .cir {
+    width: 20px;
+    height: 20px;
+    border-radius: 60%;
+    border: 1px solid var(--hr-color);
+}
+
+.reviews .bullets .cir.active {
+    background-color: var(--main-color);
+}
+
+.reviews .skill-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews .skill-container .skill {
+    margin-bottom: 40px;
+}
+
+.reviews .skill-container .skill p {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.reviews .skill-container .skill .background-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #dedadc;
+}
+
+.reviews .skill-container .skill .front-bar {
+    width: 80%;
+    height: 30px;
+    background-color: var(--main-color);
+    position: relative;
+}
+
+.reviews .skill-container .skill .front-bar::after {
+    content: attr(percentage);
+    position: absolute;
+    right: 0;
+    bottom: 45px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    transform: translateX(50%);
+    font-size: 20px;
+}
+
+.reviews .skill-container .skill .front-bar::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 25px;
+    color: white;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent;
+    border-top-color: black;
+    transform: translateX(50%);
+}
+
+/* reviews sec end */
