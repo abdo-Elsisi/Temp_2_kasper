@@ -63,7 +63,7 @@ body {
 /* lg screen */
 @media (min-width: 992px) and (max-width: 1199px) {
     .container {
-        width: 980px;
+        width: 860px;
     }
 }
 
@@ -877,6 +877,11 @@ header button .toggle-menu {
     .reviews .recommendation-container .recommendation p {
         margin-left: 0;
     }
+
+    .reviews .recommendation-container .recommendation img {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 .reviews .bullets {
@@ -929,7 +934,7 @@ header button .toggle-menu {
     content: attr(percentage);
     position: absolute;
     right: 0;
-    bottom: 45px;
+    bottom: 40px;
     background-color: black;
     color: white;
     padding: 5px;
@@ -977,13 +982,226 @@ header button .toggle-menu {
     z-index: 1;
 }
 
-.quote .container h2 {
-    font-weight: normal;
-    font-size: 2.5em;
+.quote .container q {
+    quotes: '' '';
+    font-size: 2.2em;
     margin-bottom: 30px;
+    display: block;
+    text-transform: capitalize;
+}
+
+.quote .container q::before {
+    content: "\f10d";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 700;
+    color: #a2a2a2;
+}
+.quote .container q::after {
+    content: "\f10e";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 700;
+    color: #a2a2a2;
+}
+
+@media (max-width: 767px) {
+    .quote .container q {
+        font-size: 1.6em;
+    }
+    
 }
 
 .quote .container p {
     font-size: 20px;
 }
 /* quote sec end */
+/* pricing start */
+.pricing {
+    padding-top: var(--sec-padding);
+    padding-bottom: var(--sec-padding);
+}
+
+.pricing .price-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+}
+
+.pricing .price-container .card {
+    width: 31%;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #fcfcfc;
+    text-transform: capitalize;
+    padding: 30px 0;
+    border-top: 1px solid var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+}
+
+.pricing .price-container .card:last-child {
+    background-color: var(--main-color);
+    border-color: white;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 576px) {
+    .pricing .price-container .card {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+@media (min-width: 577px) and (max-width: 767px) {
+    .pricing .price-container .card {
+        width: 47%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+@media (min-width: 768px) {
+    .pricing .price-container .card {
+        width: 31%;
+    }
+    
+}
+
+.pricing .price-container .card h3 {
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.pricing .price-container .card h3 + span {
+    font-weight: 700;
+    font-size: 52px;
+    position: relative;
+}
+
+.pricing .price-container .card h3 + span::before {
+    content: '$';
+    font-size: 22px;
+    position: absolute;
+    top: 4px;
+    left: -30px;
+    font-weight: normal;
+}
+.pricing .price-container .card h3 + span::after {
+    content: '/Mo';
+    font-size: 18px;
+    position: absolute;
+    bottom: 4px;
+    right: -47px;
+    font-weight: bold;
+}
+
+.pricing .price-container .card ul {
+    margin-top: 40px;
+    border: inherit;
+    padding: 0 65px;
+}
+
+.pricing .price-container .card ul li {
+    padding: 20px 0;
+    font-size: 15px;
+}
+.pricing .price-container .card ul li:not(:last-child) {
+    border-bottom: inherit;
+}
+.pricing .price-container .card button {
+    margin: 20px auto;
+    width: 110px;
+    height: 50px;
+    color: #783aa3;
+    background-color: white;
+    border: 1px solid var(--main-color);
+    text-transform: capitalize;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 1s all;
+}
+
+.pricing .card:last-child button:hover {
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+}
+
+.pricing .card:last-child button::after{
+    content: '';
+    position: absolute;
+    background-color: var(--hr-color);
+    width: 100%;
+    height: 5px;
+    top: 0;
+    left: -100%;
+    transition: 1s all;
+}
+.pricing .card:last-child button::before{
+    content: '';
+    position: absolute;
+    background-color: var(--hr-color);
+    width: 100%;
+    height: 5px;
+    bottom: 0;
+    right: -100%;
+    transition: 1s all;
+}
+.pricing .card:last-child button:hover::after{
+    left: 0;
+}
+.pricing .card:last-child button:hover::before{
+    right: 0;
+}
+.pricing .card:last-child button span::after{
+    content: '';
+    position: absolute;
+    background-color: var(--hr-color);
+    width: 5px;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+    transition: 1s all;
+}
+
+.pricing .card:last-child button span::before{
+    content: '';
+    position: absolute;
+    /* background-color: var(--hr-color); */
+    background-color: var(--hr-color);
+    width: 5px;
+    height: 100%;
+    top: -100%;
+    right: 0;
+    transition: 1s all;
+}
+.pricing .card:last-child button:hover span::after{
+    bottom: 0;
+}
+.pricing .card:last-child button:hover span::before{
+    top: 0;
+}
+
+.pricing .container > p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+.pricing .container > button {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 25px;
+    padding: 20px 30px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    display: block;
+    margin: auto;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+/* pricing end */
