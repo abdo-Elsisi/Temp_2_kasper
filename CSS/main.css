@@ -70,7 +70,7 @@ body {
 /* xl screen */
 @media (min-width: 1200px) and (max-width: 1399px) {
     .container {
-        width: 1200px;
+        width: 1100px;
     }
 }
 
@@ -1062,9 +1062,16 @@ header button .toggle-menu {
     }
     
 }
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
     .pricing .price-container .card {
         width: 31%;
+    }
+    
+}
+
+@media (min-width: 1200px) {
+    .pricing .price-container .card {
+        width: 24%;
     }
     
 }
@@ -1205,3 +1212,91 @@ header button .toggle-menu {
     cursor: pointer;
 }
 /* pricing end */
+/*subscribe sec start */
+.subscribe {
+    padding-top: var(--sec-padding);
+    padding-bottom: var(--sec-padding);
+    background-image: url(../imgs/subscribe.jpg);
+    position: relative;
+    background-size: cover;
+}
+
+.subscribe::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0 0 0 / 50%);
+}
+
+.subscribe .container {
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .subscribe .container {
+        flex-direction: column;
+    }
+    
+}
+
+.subscribe .container form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 500px;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.subscribe .container form input[type="email"] {
+    background-color: transparent;
+    border: 1px solid white;
+    border-right: none;
+    caret-color: var(--main-color);
+    color: white;
+    padding: 15px 15px 15px 50px;
+    width: calc(100% - 130px);
+}
+
+.subscribe .container form input[type="email"]:focus,
+.subscribe .container form input[type="submit"]:focus {
+    outline: none;
+}
+
+.subscribe .container form input[type="email"]::placeholder {
+    color: white;
+    text-transform: uppercase;
+}
+
+.subscribe .container form input[type="submit"] {
+    border: 1px solid white;
+    border-left: none;
+    background-color: var(--main-color);
+    color: white;
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+.subscribe .container form i {
+    position: absolute;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.subscribe .container .text {
+    line-height: 1.9;
+    margin-left: 50px;
+}
+
+@media (max-width: 991px) {
+    .subscribe .container .text {
+        margin: 50px 0 0;
+    }    
+}
+/*subscribe sec end */
