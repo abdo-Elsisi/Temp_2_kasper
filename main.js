@@ -1,4 +1,3 @@
-// alert(innerWidth);
 // Variables declarations
 const menuBtn = document.getElementById("show-list-btn");
 const menu = document.getElementById("menu");
