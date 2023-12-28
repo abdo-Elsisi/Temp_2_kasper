@@ -1,9 +1,24 @@
 // Variables declarations
+//header vars
 const menuBtn = document.getElementById("show-list-btn");
 const menu = document.getElementById("menu");
+//landing vars
 const landingContent = document.querySelector(".content");
+const landingSec = document.querySelector(".landing");
+const landingChangeBackgroundBtns = document.querySelectorAll(".change-background");
+let landingBackgroundInterval;
 const circleArr = document.querySelectorAll(".circle");
 let currLandingHeader = 1;
+//conent of landing headers
+const backgroundTextArr =
+    [
+        "<h2>Unlock Explosive <br>Growth</h2><p>Tired of stagnant marketing results? Kasper is here to help. We create data-driven campaigns that deliver real results, from boosting brand awareness to driving conversions.</p>",
+        "<h2>Craft Stories <br> Captivate Audience</h2><p>Kasper helps you craft powerful narratives that resonate with your target audience. We develop engaging content across all channels, from social media to email marketing, to drive meaningful engagement.</p>",
+        "<h2>Kasper<br>Creative Powerhouse</h2><p>Kasper's team of creative experts helps you design a unique brand identity that stands out from the competition. From website design to video production, we create stunning visuals that tell your brand story.</p>"
+    ];
+//landing background images
+const backgroundImageArr = ["landing2.jpg","landing.jpg","landing3.jpg"]
+//portfolio var
 const portfolioImages = document.querySelectorAll(".box");
 const portfolioHiddenBlocks = document.querySelectorAll(".hide-element");
 const portfolioMoreAnchor = document.querySelector(".more");
@@ -44,47 +59,75 @@ const recommendations = [
   ];
   
 
-//event
+//menu button click event
 menuBtn.addEventListener("click", function () {
     menu.classList.toggle("small-screen-list");
     console.log("clicked")
 })
 
-//conent of landing script
-const backgroundTextArr =
-    [
-        "<h2>Unlock Explosive <br>Growth with Kasper</h2><p>Tired of stagnant marketing results? Kasper is here to help. We create data-driven campaigns that deliver real results, from boosting brand awareness to driving conversions.</p>",
-        "<h2>Craft Stories <br> Captivate Audience</h2><p>Kasper helps you craft powerful narratives that resonate with your target audience. We develop engaging content across all channels, from social media to email marketing, to drive meaningful engagement.</p>",
-        "<h2>Kasper<br>Creative Powerhouse</h2><p>Kasper's team of creative experts helps you design a unique brand identity that stands out from the competition. From website design to video production, we create stunning visuals that tell your brand story.</p>"
-    ];
-
+//index of current landing background image and text displayed update
 function incrementIndex() {
     currLandingHeader++;
     if (currLandingHeader == backgroundTextArr.length)
-        currLandingHeader = 0;
+    currLandingHeader = 0;
 }
 
+//index of current landing background image and text displayed update
 function decrementIndex() {
     currLandingHeader--;
     if (currLandingHeader == -1)
         currLandingHeader = backgroundTextArr.length - 1;
 }
+
+//landing move left clicked
 function displayPrevBakground() {
     toggleActiveCircle();
     decrementIndex();
     toggleActiveCircle();
     updateLandingHeader();
+    updateLandingImage();
 }
+
+//landing move right clicked
 function displayNextBakground() {
     toggleActiveCircle();
     incrementIndex();
     toggleActiveCircle();
     updateLandingHeader();
+    updateLandingImage();
 }
+
+//landing autochange background
+function autochangeBackground() {
+    landingBackgroundInterval = setInterval(function(){
+        //get next background
+        displayNextBakground();
+    },4000);
+}
+//call the function to start auto changing background
+autochangeBackground();
+//stop auto changing background
+function pauseAutoChange() {
+    clearInterval(landingBackgroundInterval);
+}
+landingChangeBackgroundBtns.forEach((btn) => {
+    //stop auto changing background when user hoover over left and right buttons
+    btn.addEventListener("mouseover",pauseAutoChange);
+    //continue auto changing background when user mouseout left and right buttons
+    btn.addEventListener("mouseout",autochangeBackground);
+})
+
+//update the header content of landing according to currLandingHeader index value
 function updateLandingHeader() {
     landingContent.innerHTML = backgroundTextArr[currLandingHeader];
 }
 
+//update the background image of landing according to currLandingHeader index value
+function updateLandingImage() {
+    landingSec.style.backgroundImage = `url("../imgs/${backgroundImageArr[currLandingHeader]}")`;
+}
+
+//toggle activation style class for a bullet in the landing section
 function toggleActiveCircle() {
     circleArr[currLandingHeader].classList.toggle("active");
 }
@@ -102,10 +145,12 @@ circleArr.forEach((circle) => {
         toggleActiveCircle();
         // update content of the container
         updateLandingHeader();
+        updateLandingImage();
+
     })
 })
-/////////////////////////////////////////////////////////////////////////////////
-// portfolio and filtering section
+
+// portfolio section MORE button was clicked
 function toggleView(e) {
     const portfolioNotHiddenBlocks = document.querySelectorAll(".box:not(.hide-element)");
     e.preventDefault();
@@ -118,6 +163,7 @@ function toggleView(e) {
     toggleMoreLess();
 }
 
+//portfolio section more button change text MORE~LESS
 function toggleMoreLess() {
     if(portfolioMoreAnchor.innerHTML.toLowerCase() == "more")
         portfolioMoreAnchor.innerHTML = "less";
@@ -130,9 +176,8 @@ function showAll() {
     [...portfolioImages].forEach((box) => {
         box.classList.remove("hide-element");
     });
-    //hide below elements
-    // showLess();
 }
+
 // portfolio shuffling section anchors
 shuffleAnchors.forEach(a => {
     a.addEventListener("click", function (event) {
@@ -151,6 +196,7 @@ shuffleAnchors.forEach(a => {
     })
 });
 
+//style current active filter
 function activateShuffelAnchor(e) {
     //unactivate prev element
     const element = document.querySelector('.shuffle-anchor.active');
@@ -159,6 +205,7 @@ function activateShuffelAnchor(e) {
     e.classList.add("active");
 }
 
+//portfolio less button was clicked
 function showLess() {
     [...portfolioImages].slice(8).forEach((box) => {
         const isHidden = box.classList.contains("hide-element");
@@ -169,8 +216,8 @@ function showLess() {
     });
 }
 
+//hide not selected box for portfolio section shuffling
 function hideBox(attributeName) {
-    // console.log("att:"+attributeName);
     const secBoxesToHide = document.querySelectorAll(".box:not([category='"+attributeName+"'])");
     //hide all other elements
     [...secBoxesToHide].forEach(box => {
@@ -181,7 +228,8 @@ function hideBox(attributeName) {
         box.classList.remove("hide-element");
     })
 }
-// recommendation code:
+
+// recommendation click bullets events.
 cir.forEach((bullet, index) => {
     bullet.addEventListener("click", () => {
       recommendationContainer.innerHTML = recommendations[index];
