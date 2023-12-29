@@ -17,7 +17,7 @@ const backgroundTextArr =
         "<h2>Kasper<br>Creative Powerhouse</h2><p>Kasper's team of creative experts helps you design a unique brand identity that stands out from the competition. From website design to video production, we create stunning visuals that tell your brand story.</p>"
     ];
 //landing background images
-const backgroundImageArr = ["landing2.jpg", "landing.jpg", "landing3.jpg"]
+let backgroundImageArr = ["landing2-mobile.jpg", "landing-mobile.jpg", "landing3-mobile.jpg"]
 //portfolio var
 const portfolioImages = document.querySelectorAll(".box");
 const portfolioHiddenBlocks = document.querySelectorAll(".hide-element");
@@ -59,7 +59,31 @@ const recommendations = [
 ];
 //review section var
 const progressBars = document.querySelectorAll(".front-bar");
+//handle different screen sizes landing background
+function handleLandingBackground() {
+    const xsScreen = window.matchMedia("(max-width: 576px)");
+    const smScreen = window.matchMedia("(min-width: 576px) and (max-width: 767px)");
+    const medScreen = window.matchMedia("(min-width: 768px) and (max-width: 991px)");
+    const largeScreen = window.matchMedia("(min-width: 992px) and (max-width: 1200px)");
+    //background for mobile screen
+    if(xsScreen.matches)
+        backgroundImageArr = ["landing2-mobile.jpg", "landing-mobile.jpg", "landing3-mobile.jpg"];
+    else if(smScreen.matches)
+        backgroundImageArr = ["landing2-small.jpg", "landing-small.jpg", "landing3-small.jpg"];
+    else if(medScreen.matches)
+        backgroundImageArr = ["landing2-medium.jpg", "landing-medium.jpg", "landing3-medium.jpg"];
+    else if(largeScreen.matches)
+        backgroundImageArr = ["landing2-large.jpg", "landing-large.jpg", "landing3-large.jpg"];
+    else //extra large screen 1201px or more
+        backgroundImageArr = ["landing2.jpg", "landing.jpg", "landing3.jpg"];
+}
+//apply suitable screen background at landing section
+handleLandingBackground();
 
+//add event for screen resizing
+window.addEventListener("resize", function() {
+    handleLandingBackground();
+  });
 //menu button click event
 menuBtn.addEventListener("click", function () {
     menu.classList.toggle("small-screen-list");
