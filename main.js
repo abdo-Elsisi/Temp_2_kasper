@@ -177,7 +177,7 @@ circleArr.forEach((circle) => {
 
 // portfolio section MORE button was clicked
 function toggleView(e) {
-    const portfolioNotHiddenBlocks = document.querySelectorAll(".box:not(.hide-element)");
+    const portfolioNotHiddenBlocks = document.querySelectorAll(".image-container .box:not(.hide-element)");
     e.preventDefault();
     //check presesnt blocks
     if ([...portfolioNotHiddenBlocks].length > 8)
@@ -211,7 +211,8 @@ shuffleAnchors.forEach(a => {
         const attrName = event.target.innerText;
         if (attrName == "All") {
             showAll();
-            toggleMoreLess();
+            showLess();
+            portfolioMoreAnchor.innerHTML = "more";
             portfolioMoreAnchor.style.display = "block";
         }
         else {
