@@ -359,6 +359,7 @@ header button .toggle-menu {
 
 .landing .reset-button:hover {
     background-color: var(--main-color);
+    cursor: pointer;
 }
 
 .landing button.change-right {
@@ -954,6 +955,7 @@ header button .toggle-menu {
     height: 30px;
     background-color: var(--main-color);
     position: relative;
+    transition: 1ms ease-in-out;
 }
 
 .reviews .skill-container .skill .front-bar::after {

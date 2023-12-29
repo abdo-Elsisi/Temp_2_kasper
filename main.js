@@ -17,7 +17,7 @@ const backgroundTextArr =
         "<h2>Kasper<br>Creative Powerhouse</h2><p>Kasper's team of creative experts helps you design a unique brand identity that stands out from the competition. From website design to video production, we create stunning visuals that tell your brand story.</p>"
     ];
 //landing background images
-const backgroundImageArr = ["landing2.jpg","landing.jpg","landing3.jpg"]
+const backgroundImageArr = ["landing2.jpg", "landing.jpg", "landing3.jpg"]
 //portfolio var
 const portfolioImages = document.querySelectorAll(".box");
 const portfolioHiddenBlocks = document.querySelectorAll(".hide-element");
@@ -28,7 +28,7 @@ const cir = document.querySelectorAll(".cir");
 const recommendationContainer = document.querySelector(".recommendation-container");
 const recommendations = [
     [
-      `<div class="recommendation" signature="Jane Doe, Marketing Manager">
+        `<div class="recommendation" signature="Jane Doe, Marketing Manager">
         <img src="imgs/skills-05.jpg" alt="profile pic">
         <p>Kaspers digital marketing strategies have been instrumental in boosting our brand awareness</p></div>
       <div class="recommendation" signature="Peter Smith, CEO">
@@ -37,7 +37,7 @@ const recommendations = [
       </div>`
     ],
     [
-      `<div class="recommendation" signature="Maria Garcia, Founder">
+        `<div class="recommendation" signature="Maria Garcia, Founder">
         <img src="imgs/skills-01.jpg" alt="profile pic">
         <p>I was initially hesitant to invest in digital marketing, but after working with Kasper.</p>
       </div>
@@ -47,7 +47,7 @@ const recommendations = [
       </div>`
     ],
     [
-      `<div class="recommendation" signature="Sarah Jones, Marketing Director">
+        `<div class="recommendation" signature="Sarah Jones, Marketing Director">
         <img src="imgs/skills-03.jpg" alt="profile pic">
         <p>Kasper's ability to think outside the box and come up with innovative solutions is what I value most.</p>
       </div>
@@ -56,8 +56,9 @@ const recommendations = [
         <p>Kasper's commitment to client satisfaction is truly exceptional. They are always available</p>
       </div>`
     ]
-  ];
-  
+];
+//review section var
+const progressBars = document.querySelectorAll(".front-bar");
 
 //menu button click event
 menuBtn.addEventListener("click", function () {
@@ -69,7 +70,7 @@ menuBtn.addEventListener("click", function () {
 function incrementIndex() {
     currLandingHeader++;
     if (currLandingHeader == backgroundTextArr.length)
-    currLandingHeader = 0;
+        currLandingHeader = 0;
 }
 
 //index of current landing background image and text displayed update
@@ -99,10 +100,10 @@ function displayNextBakground() {
 
 //landing autochange background
 function autochangeBackground() {
-    landingBackgroundInterval = setInterval(function(){
+    landingBackgroundInterval = setInterval(function () {
         //get next background
         displayNextBakground();
-    },4000);
+    }, 4000);
 }
 //call the function to start auto changing background
 autochangeBackground();
@@ -112,9 +113,9 @@ function pauseAutoChange() {
 }
 landingChangeBackgroundBtns.forEach((btn) => {
     //stop auto changing background when user hoover over left and right buttons
-    btn.addEventListener("mouseover",pauseAutoChange);
+    btn.addEventListener("mouseover", pauseAutoChange);
     //continue auto changing background when user mouseout left and right buttons
-    btn.addEventListener("mouseout",autochangeBackground);
+    btn.addEventListener("mouseout", autochangeBackground);
 })
 
 //update the header content of landing according to currLandingHeader index value
@@ -155,7 +156,7 @@ function toggleView(e) {
     const portfolioNotHiddenBlocks = document.querySelectorAll(".box:not(.hide-element)");
     e.preventDefault();
     //check presesnt blocks
-    if([...portfolioNotHiddenBlocks].length > 8)
+    if ([...portfolioNotHiddenBlocks].length > 8)
         showLess();
     else
         showAll();
@@ -165,7 +166,7 @@ function toggleView(e) {
 
 //portfolio section more button change text MORE~LESS
 function toggleMoreLess() {
-    if(portfolioMoreAnchor.innerHTML.toLowerCase() == "more")
+    if (portfolioMoreAnchor.innerHTML.toLowerCase() == "more")
         portfolioMoreAnchor.innerHTML = "less";
     else
         portfolioMoreAnchor.innerHTML = "more";
@@ -184,13 +185,13 @@ shuffleAnchors.forEach(a => {
         event.preventDefault();
         activateShuffelAnchor(event.target);
         const attrName = event.target.innerText;
-        if(attrName == "All") {
+        if (attrName == "All") {
             showAll();
             toggleMoreLess();
-            portfolioMoreAnchor.style.display ="block";
+            portfolioMoreAnchor.style.display = "block";
         }
-        else{
-            portfolioMoreAnchor.style.display ="none";
+        else {
+            portfolioMoreAnchor.style.display = "none";
             hideBox(attrName);
         }
     })
@@ -209,7 +210,7 @@ function activateShuffelAnchor(e) {
 function showLess() {
     [...portfolioImages].slice(8).forEach((box) => {
         const isHidden = box.classList.contains("hide-element");
-        if(!isHidden)
+        if (!isHidden)
             box.classList.add("hide-element");
         else
             console.log("already hidden");
@@ -218,12 +219,12 @@ function showLess() {
 
 //hide not selected box for portfolio section shuffling
 function hideBox(attributeName) {
-    const secBoxesToHide = document.querySelectorAll(".box:not([category='"+attributeName+"'])");
+    const secBoxesToHide = document.querySelectorAll(".box:not([category='" + attributeName + "'])");
     //hide all other elements
     [...secBoxesToHide].forEach(box => {
         box.classList.add("hide-element");
     });
-    const filteredBoxes = document.querySelectorAll("[category='"+attributeName+"']");
+    const filteredBoxes = document.querySelectorAll("[category='" + attributeName + "']");
     [...filteredBoxes].forEach(box => {
         box.classList.remove("hide-element");
     })
@@ -232,11 +233,47 @@ function hideBox(attributeName) {
 // recommendation click bullets events.
 cir.forEach((bullet, index) => {
     bullet.addEventListener("click", () => {
-      recommendationContainer.innerHTML = recommendations[index];
-  
-      // Add active class to clicked bullet and remove from others
-      cir.forEach(b => b.classList.remove("active"));
-      bullet.classList.add("active");
+        recommendationContainer.innerHTML = recommendations[index];
+
+        // Add active class to clicked bullet and remove from others
+        cir.forEach(b => b.classList.remove("active"));
+        bullet.classList.add("active");
     });
 });
-  
+
+//review section progress bars loading animations
+// Create an array of objects to store progress bar data
+let progressData = [];
+// Initialize data for each progress bar
+progressBars.forEach((bar, index) => {
+    progressData[index] = {
+        bar,
+        currentWidth: 0,
+        percentage: parseInt(bar.getAttribute("percentage")),
+        intervalId: null,
+    };
+
+    const animate = () => {
+        progressData[index].currentWidth += 1; // Increase width by 1% in each step
+        //assign new width to the bar
+        progressData[index].bar.style.width = `${progressData[index].currentWidth}%`;
+        //check if the bar reaced its final value
+        if (progressData[index].currentWidth >= progressData[index].percentage) {
+            clearInterval(progressData[index].intervalId); // Continue animation until target reached
+        }
+    };
+//animate the bar when user scroll by it
+    const handleScroll = () => {
+        const rect = bar.getBoundingClientRect(); // Calculate rect on each scroll
+        // !progressData[index].intervalId: condition prevent creating infinity interval with each scroll
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight && !progressData[index].intervalId) {
+            //start animation, time step: 20ms
+            progressData[index].intervalId = setInterval(animate, 20);
+            //animation for the first time only user scroll over it
+            window.removeEventListener("scroll", handleScroll);
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+});
