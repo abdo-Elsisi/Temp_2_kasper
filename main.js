@@ -149,7 +149,7 @@ function updateLandingHeader() {
 
 //update the background image of landing according to currLandingHeader index value
 function updateLandingImage() {
-    landingSec.style.backgroundImage = `url("../imgs/${backgroundImageArr[currLandingHeader]}")`;
+    landingSec.style.backgroundImage = `url("imgs/${backgroundImageArr[currLandingHeader]}")`;
 }
 
 //toggle activation style class for a bullet in the landing section
