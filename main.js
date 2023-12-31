@@ -83,6 +83,8 @@ handleLandingBackground();
 //add event for screen resizing
 window.addEventListener("resize", function() {
     handleLandingBackground();
+    //update background
+    displayNextBakground();
   });
 //menu button click event
 menuBtn.addEventListener("click", function () {
@@ -151,7 +153,7 @@ function updateLandingHeader() {
 function updateLandingImage() {
     landingSec.style.backgroundImage = `url("./imgs/${backgroundImageArr[currLandingHeader]}")`;
     //debugging
-    console.log("background path: "+landingSec.style.backgroundImage);
+    // console.log("background path: "+landingSec.style.backgroundImage);
 }
 
 //toggle activation style class for a bullet in the landing section
@@ -181,8 +183,9 @@ circleArr.forEach((circle) => {
 function toggleView(e) {
     const portfolioNotHiddenBlocks = document.querySelectorAll(".image-container .box:not(.hide-element)");
     e.preventDefault();
+    const numOfBlocksShown = 8;
     //check presesnt blocks
-    if ([...portfolioNotHiddenBlocks].length > 8)
+    if ([...portfolioNotHiddenBlocks].length > numOfBlocksShown)
         showLess();
     else
         showAll();

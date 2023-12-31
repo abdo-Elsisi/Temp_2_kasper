@@ -1470,6 +1470,17 @@ footer .container ul {
 footer .container ul a {
     text-decoration: none;
     color: white;
+    cursor: pointer;
+}
+
+footer .container ul a {
+    & i {
+        transition: 1s ease-out;
+    }
+    & i:hover {
+        color: var(--main-color);
+        transform: rotateZ(360deg);
+    }
 }
 
 footer .container p:last-child {
