@@ -59,6 +59,13 @@ const recommendations = [
 ];
 //review section var
 const progressBars = document.querySelectorAll(".front-bar");
+//mobile screen menu button clicked
+function handleMenuIcon() {
+    //access menu icon
+    const menuBtnIcon = document.querySelector(".toggle-menu");
+    //change menu icon to x and vice verse
+    menuBtnIcon.classList.toggle("fa-x")
+}
 //handle different screen sizes landing background
 function handleLandingBackground() {
     const xsScreen = window.matchMedia("(max-width: 576px)");
